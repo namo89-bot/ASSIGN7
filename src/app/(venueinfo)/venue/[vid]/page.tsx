@@ -1,17 +1,16 @@
 import Image from "next/image";
-
-export default async function VenueDetailPage({ params }: { params: { vid: string } }) {
+export default async function VenueDetailPage({ params }: { params: Promise<{ vid: string }> }) {
     const { vid } = await params;
 
     const venueDetail = new Map([
-        ['001', { name: 'The Bloom Pavilion', src: '/img/bloom.jpg' }],
-        ['002', { name: 'Spark Space', src: '/img/sparkspace.jpg' }],
-        ['003', { name: 'The Grand Table', src: '/img/grandtable.jpg' }],
+        ['001', { name: 'The Bloom Pavilion', src: '/img/cover.jpg' }],
+        ['002', { name: 'Spark Space', src: '/img/cover2.jpg' }],
+        ['003', { name: 'The Grand Table', src: '/img/cover3.jpg' }],
     ]);
+
     const targetVenue = venueDetail.get(vid);
-    if (!targetVenue) {
-        return <div className="p-10 text-center">Venue not found</div>;
-    }
+
+    if (!targetVenue) return <div className="p-10 text-center">Venue not found</div>;
 
     return (
         <main className="p-20 text-center">
@@ -20,9 +19,7 @@ export default async function VenueDetailPage({ params }: { params: { vid: strin
                 <Image 
                     src={targetVenue.src} 
                     alt={targetVenue.name} 
-                    width={0} 
-                    height={0} 
-                    sizes="100vw"
+                    width={0} height={0} sizes="100vw"
                     className="rounded-lg w-[50%] h-auto"
                 />
                 <div className="text-center mx-10">
