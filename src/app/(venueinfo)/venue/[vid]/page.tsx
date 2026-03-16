@@ -3,9 +3,9 @@ export default async function VenueDetailPage({ params }: { params: Promise<{ vi
     const { vid } = await params;
 
     const venueDetail = new Map([
-        ['001', { name: 'The Bloom Pavilion', src: '/img/cover.jpg' }],
-        ['002', { name: 'Spark Space', src: '/img/cover2.jpg' }],
-        ['003', { name: 'The Grand Table', src: '/img/cover3.jpg' }],
+        ['001', { name: 'The Bloom Pavilion', src: '/img/bloom.jpg' }],
+        ['002', { name: 'Spark Space', src: '/img/sparkspace.jpg' }],
+        ['003', { name: 'The Grand Table', src: '/img/grandtable.jpg' }],
     ]);
 
     const targetVenue = venueDetail.get(vid);
